@@ -1,4 +1,10 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  DisplayCopNames: true
+  NewCops: enable
 Style/Documentation:
   Enabled: false
 Metrics/BlockLength:
+  Enabled: false
+Metrics/AbcSize:
   Enabled: false
