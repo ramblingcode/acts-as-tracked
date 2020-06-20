@@ -1,3 +1,6 @@
+[![Gem Version](https://badge.fury.io/rb/acts-as-tracked.svg)](https://badge.fury.io/rb/acts-as-tracked)
+[![CircleCI](https://circleci.com/gh/ramblingcode/acts-as-tracked.svg?style=svg)](https://circleci.com/gh/ramblingcode/acts-as-tracked)
+
 # ActsAsTracked
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/acts_as_tracked`. To experiment with that code, run `bin/console` for an interactive prompt.
