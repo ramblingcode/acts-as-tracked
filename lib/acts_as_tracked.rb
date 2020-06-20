@@ -1,4 +1,6 @@
-require "acts_as_tracked/version"
+# frozen_string_literal: true
+
+require 'acts_as_tracked/version'
 require 'active_record'
 
 module ActsAsTracked
