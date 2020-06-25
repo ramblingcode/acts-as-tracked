@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ActsAsTracked
-  class Activity < ActiveRecord::Base
+  class Activity < ::ActiveRecord::Base
     belongs_to :actor, polymorphic: true
     belongs_to :subject, polymorphic: true
     belongs_to :parent, polymorphic: true

@@ -1,0 +1,3 @@
+test:
+  adapter:  postgresql
+  database: acts_as_tracked_test
