@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['sahil.gadimbay@gmail.com']
 
   spec.summary       = 'Activity Tracker to plug into ActiveRecord.'
-  spec.description   = 'Track activities in your activerecord models.'
+  spec.description   = 'Track activities in your ActiveRecord models.'
   spec.homepage      = 'https://github.com/ramblingcode/acts-as-tracked'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')

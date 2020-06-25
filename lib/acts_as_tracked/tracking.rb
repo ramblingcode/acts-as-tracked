@@ -7,9 +7,9 @@ module ActsAsTracked
     extend ActiveSupport::Concern
 
     included do
-      has_many :activities_as_subject, as: :subject, class_name: 'Activity', dependent: :nullify
-      has_many :activities_as_parent, as: :parent, class_name: 'Activity', dependent: :nullify
-      has_many :activities_as_actor, as: :actor, class_name: 'Activity', dependent: :nullify
+      has_many :activities_as_subject, as: :subject, class_name: 'ActsAsTracked::Activity', dependent: :nullify
+      has_many :activities_as_parent, as: :parent, class_name: 'ActsAsTracked::Activity', dependent: :nullify
+      has_many :activities_as_actor, as: :actor, class_name: 'ActsAsTracked::Activity', dependent: :nullify
 
       after_create :track_create_activity!, if: :tracking_changes?
       after_update :track_update_activity!, if: :tracking_changes?, prepend: true
