@@ -1,0 +1,3 @@
+test:
+  service: Disk
+  root: /home/sgadimbayli/development/opensource/acts_as_tracked/tmp/storage

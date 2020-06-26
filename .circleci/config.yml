@@ -6,6 +6,16 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
+        environment:
+            RAILS_ENV: test
+            PGHOST: 127.0.0.1
+            PGUSER: root
+      
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: acts_as_tracked_test
+
     executor: ruby/default
     steps:
       - checkout
@@ -23,13 +33,20 @@ jobs:
           name: Bundle Install
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+            
+      - run: sudo apt install -y postgresql-client || true
 
       - save_cache:
           name: Store bundle cache
           paths:
             - ./vendor/bundle
-          key: hermes-dependencies
+          key: acts-as-tracked-dependencies
 
       - run:
           name: Rubocop check
           command:  bundle exec rubocop
+
+      - run:
+          name: Test Suite
+          command: PREPARE_COMBUSTION_DB_USING_SCHEMA=true bundle exec rspec
+         

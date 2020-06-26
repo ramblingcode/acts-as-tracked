@@ -26,8 +26,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'actionview', '>= 4.2'
   spec.add_dependency 'activerecord', '>= 4.2'
   spec.add_dependency 'activesupport', '>= 4.2'
 
+  spec.add_development_dependency 'codecov'
+  spec.add_development_dependency 'combustion', '~> 1.3'
+  spec.add_development_dependency 'pg'
+  spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'with_model'
 end
