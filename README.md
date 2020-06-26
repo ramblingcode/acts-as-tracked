@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/acts-as-tracked.svg)](https://badge.fury.io/rb/acts-as-tracked)
+[![Gem Version](https://badge.fury.io/rb/acts_as_tracked.svg)](https://badge.fury.io/rb/acts_as_tracked)
 [![CircleCI](https://circleci.com/gh/ramblingcode/acts-as-tracked.svg?style=svg)](https://circleci.com/gh/ramblingcode/acts-as-tracked)
 [![codecov](https://codecov.io/gh/ramblingcode/acts-as-tracked/branch/master/graph/badge.svg)](https://codecov.io/gh/ramblingcode/acts-as-tracked)
 
