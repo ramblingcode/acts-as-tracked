@@ -5,9 +5,9 @@
 
 # ActsAsTracked
 
-Welcome to ActsAsTracked! This gem is an extension to your ActiveRecord models to track activities. It does not track everything all the time, but can be used wherever you find it necessary to have a history for changes alongside their actors.
+Welcome to ActsAsTracked! This gem is an extension to your ActiveRecord models to track activities. It does not track everything all the time or in the background, but can be used wherever you find it necessary to have a history for changes alongside their actors.
 
-There are few other gems such as [audited](https://github.com/collectiveidea/audited), however, it is tracking every change on your models. ActsAsTracked is controlled by `you` and will track changes only when `used directly`.
+There are few other gems such as [audited](https://github.com/collectiveidea/audited), however, it is tracking every change on your models. ActsAsTracked is controlled by `you` and will track changes only when `used explicitly`.
 
 ## Installation
 
@@ -20,13 +20,13 @@ gem 'acts_as_tracked'
 And then execute:
 
 ```shell
-$ bundle install
+bundle install
 ```
 
 Or install it yourself as:
 
 ```shell
-$ gem install acts_as_tracked
+gem install acts_as_tracked
 ```
 
 ## Usage
@@ -79,7 +79,7 @@ If you would like to track changes of `Post` model, you would need to call `acts
     # You may optionally pass in exluded_activity_attributes
     # as an argument to not track given fields.
     #
-    # acts_as_tracked(exclude_activity_attributes: %i[:api_key, :username])
+    # acts_as_tracked(exclude_activity_attributes: %i[api_key, username])
   end
 ```
 
@@ -160,13 +160,41 @@ Post.tracking_changes(actor: User.first, subject: Post.first, human_description:
 end
 ```
 
+### Excluding attributes from change sets
+
+Sometimes you would like to not track some fields of the record in change sets.
+
+You can use exclude_activity_attributes and ActsAsTracked will not include them in activities.
+
+```ruby
+  class Post < ApplicationRecord
+    acts_as_tracked(exclude_activity_attributes: %i[api_key, username])
+  end
+```
+
+### Differences between [PaperTrail](https://github.com/paper-trail-gem/paper_trail), [Audited](https://github.com/collectiveidea/audited), and [PublicActivity](https://github.com/chaps-io/public_activity) gems
+
+Main difference is that ActsAsTracked does not track anything unless used `explicitly`. It does not store versions of the record that you can rollback to.
+
+It's minimal, and only does 1 thing, that is creating activity records with change sets whenever used.
+
+It's a feature extension to your models to use when *needed*, instead of being a hook that acts in the background.
+
+```ruby
+Post.tracking_changes(actor: @user) do
+  ...changes on posts
+end
+```
+
+You can check the `tracking` module which is just a shy over 100 lines that gets plugged in your models [here](https://github.com/ramblingcode/acts-as-tracked/blob/master/lib/acts_as_tracked/tracking.rb).
+
 ### Example application using ActsAsTracked
 
 I have created a Rails 6 application with the usages of ActsAsTracked. Please refer to this [repo](https://github.com/ramblingcode/rails6-acts-as-tracked-usage)
 
 ## Credits
 
-Initial work of ActsAsTracked has been done by @rogercampos and @camaloon team. I have refined, packaged, documented, added generators and published it.
+Initial work of ActsAsTracked has been done by [@rogercampos](https://github.com/rogercampos) and [@camaloon](https://github.com/camaloon) team. I have refined, packaged, documented, added generators and published it.
 
 ## Development
 
