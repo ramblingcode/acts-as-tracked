@@ -42,15 +42,12 @@ ActsAsTracked has extension to generate migrations. Please, run:
 This will generate following migration:
 
 ```ruby
-class ActsAsTrackedMigration < ActiveRecord::Migration<Rails Version>
+class ActsAsTrackedMigration < ActiveRecord::Migration
   def self.up
     create_table :activities do |t|
-      t.integer :actor_id, index: true
-      t.string :actor_type
-      t.integer :subject_id, index: true
-      t.string :subject_type
-      t.integer :parent_id, index: true
-      t.string :parent_type
+      t.references :actor, polymorphic: true
+      t.references :subject, polymorphic: true
+      t.references :parent, polymorphic: true
       t.text :attribute_changes
       t.string :activity_type
       t.string :human_description
@@ -174,7 +171,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ramblingcode/acts_as_tracked. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/acts_as_tracked/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/ramblingcode/acts-as-tracked. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/acts_as_tracked/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
